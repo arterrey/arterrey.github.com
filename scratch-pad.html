@@ -20,6 +20,29 @@
  <h2>Public Scratch Pad by <a href="adam-terrey">Adam Terrey</a></h2>
  <p>Personal clipboard for notes of all topics which can be public. Creative spelling and grammer is used.</p>
 
+
+<hr/>
+
+from: http://peter-butkovic.blogspot.com.au/2013/08/tail-inotify-resources-exhausted.html
+<pre>
+...
+I got error:
+tail: die Inotify-Resourcen sind erschöpft
+tail: Inotify kann nicht verwendet werden, es wird auf Pollen zurückgegriffen
+- See more at: http://peter-butkovic.blogspot.com.au/2013/08/tail-inotify-resources-exhausted.html#sthash.R9ED9fm2.dpuf
+...
+cat /proc/sys/fs/inotify/max_user_watches
+...
+echo 1048576 > /proc/sys/fs/inotify/max_user_watches
+...
+Adding line:
+fs.inotify.max_user_watches=1048576
+to:
+/etc/sysctl.conf
+fixed the limit value permanently (even between restarts)...
+...
+</pre>
+
 <hr/>
 
 Getting into LDAP:
